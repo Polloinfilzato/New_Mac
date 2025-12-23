@@ -6,7 +6,20 @@ Questa guida documenta tutti i comandi installati tramite lo script **Setup Nars
 
 ---
 
+## 🛠️ Manutenzione Sistema
+
+### `fixbrew`
+Ripristina istantaneamente i permessi di Homebrew per il setup multi-utente (`ema` + `ste`). Da usare in caso di errori "Permission denied" o problemi di permessi dopo aggiornamenti di brew.
+
+```bash
+sudo fixbrew                # Ripristina permessi, ACL e bit di esecuzione
+```
+
+---
+
 ## 📑 Indice
+
+- [[#🛠️ Manutenzione Sistema]]
 
 ### Formule CLI
 - [[#🔧 Dev Tools]]
