@@ -74,6 +74,11 @@ alias sman="/usr/bin/man"
 alias 2Brain="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Second\ Brain\ Ema/"
 
 # ═══════════════════════════════════════════════════════════════
+# ALIAS - Sistema
+# ═══════════════════════════════════════════════════════════════
+alias aggiorna="brew upgrade && brew update && brew cu -via --no-brew-update --include-mas --cleanup"
+
+# ═══════════════════════════════════════════════════════════════
 # CUBBIT DS3 - Comandi semplificati (configura prima aws configure --profile cubbit)
 # ═══════════════════════════════════════════════════════════════
 cubbit() {
