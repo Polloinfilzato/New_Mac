@@ -33,7 +33,36 @@ tailscale status
 hostname
 ```
 
-## 7. Abilita SSH sul Mac
+## 7. Configura DNS per MagicDNS
+
+> **Nota:** Questo passaggio è necessario con l'installazione CLI (`brew install tailscale`).
+> L'app GUI (`brew install --cask tailscale`) configura il DNS automaticamente.
+
+**Importante:** Per risolvere i nomi Tailscale (es. `narsil`, `waneda`) devi aggiungere il DNS Tailscale manualmente.
+
+**Da GUI:**
+> Impostazioni > Rete > Wi-Fi > Dettagli > DNS > Aggiungi: `100.100.100.100`
+
+**Da terminale:**
+```bash
+# Mostra interfaccia attiva
+networksetup -listallnetworkservices
+
+# Aggiungi DNS Tailscale (sostituisci "Wi-Fi" con la tua interfaccia)
+sudo networksetup -setdnsservers "Wi-Fi" 100.100.100.100
+
+# Verifica
+networksetup -getdnsservers "Wi-Fi"
+
+# Flush cache DNS
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+```
+
+Fallo su **entrambi i Mac**.
+
+---
+
+## 8. Abilita SSH sul Mac
 
 **Opzione A - Da GUI:**
 > Impostazioni > Generali > Condivisione > Login remoto: ON
