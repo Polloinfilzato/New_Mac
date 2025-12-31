@@ -156,3 +156,46 @@ rsync -avzn ~/Progetti/ ema@narsil:~/Progetti/
 | `-z` | Comprimi durante trasferimento |
 | `-n` | Dry-run (simula senza eseguire) |
 | `--delete` | Elimina file nella destinazione non presenti nella sorgente |
+
+---
+
+## Troubleshooting
+
+### Errore "Operation not permitted" su cartelle iCloud
+
+Se via SSH non riesci ad accedere a `~/Library/Mobile Documents/` (iCloud Drive):
+
+```
+ls: .: Operation not permitted
+EPERM: operation not permitted, lstat '/Users/ema/Library/Mobile Documents'
+```
+
+**Causa:** macOS protegge la cartella iCloud. I processi SSH non hanno Full Disk Access.
+
+**Soluzione:**
+```bash
+# Apri le preferenze Full Disk Access
+open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
+```
+
+Poi manualmente:
+1. Clicca `+`
+2. Premi `Cmd+Shift+G`
+3. Vai a: `/usr/libexec/sshd-keygen-wrapper`
+4. Aggiungilo e attivalo
+
+> **Nota:** Non esiste comando terminale per questo - è una protezione di sicurezza macOS.
+
+### Errore "max file descriptors" con Claude via SSH
+
+Se Claude dà errore sui file descriptors via SSH:
+
+```
+error: An unknown error occurred, possibly due to low max file descriptors
+Current limit: 256
+```
+
+**Soluzione:** Aggiungi al `~/.zshrc` del Mac remoto:
+```bash
+ulimit -n 2147483646
+```
