@@ -42,12 +42,20 @@ source $ZSH/oh-my-zsh.sh
 # PLUGIN ZSH (compatibile Apple Silicon)
 # ═══════════════════════════════════════════════════════════════
 BREW_PREFIX="$(brew --prefix)"
-[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
-  source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Autosuggestions - suggerisce comandi dalla cronologia (freccia → per accettare)
 [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
   source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Syntax highlighting - colora i comandi (deve essere caricato DOPO autosuggestions)
+[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+  source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Autocomplete - completamento avanzato con TAB
 [ -f "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ] && \
   source "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+
+# Git extras - completamento comandi git-extras
 [ -f "$BREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && \
   source "$BREW_PREFIX/opt/git-extras/share/git-extras/git-extras-completion.zsh"
 
